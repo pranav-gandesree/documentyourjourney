@@ -15,15 +15,18 @@ const Navbar = () => {
       <div className="flex items-center space-x-4">
         {status === 'authenticated' ? (
           <>
-            <img
+            {/* <img
               src={session?.user?.image || ''}
               alt="User Image"
               className="w-8 h-8 rounded-full"
-            />
-            <span className="text-sm">{session?.user?.name}</span> {/* Show user name */}
+            /> */}
+            {/* <span className="text-sm">{session?.user?.name}</span>  */}
             <span className="text-sm">{session?.user?.email}</span> {/* Show user email */}
             <button
-              onClick={() => signOut()}
+             onClick={()=>signOut({
+              redirect: true,
+              callbackUrl: `${window.location.origin}/signin`
+        })}
               className="px-4 py-2 bg-red-500 hover:bg-red-700 rounded text-white"
             >
               Sign out

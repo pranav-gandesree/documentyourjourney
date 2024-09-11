@@ -6,6 +6,8 @@ import { PenLine, BarChart2, Users, Share2, Award, Briefcase } from "lucide-reac
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation";
 
 const FeatureCard = ({ icon: Icon, title, description }: any) => (
   <motion.div
@@ -33,6 +35,10 @@ const FloatingStar = ({ delay }: any) => (
 
 export default function LandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  // const session = useSession();
+  // if(session){
+  //   redirect('/home')
+  // }
 
   useEffect(() => {
     const updateMousePosition = (e: any) => {

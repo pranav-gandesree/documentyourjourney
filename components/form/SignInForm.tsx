@@ -23,7 +23,7 @@ export default function SignInForm() {
   const loginWithGoogle = async () => {
     try {
       setIsLoading(true);
-      await signIn("google", { callbackUrl: 'http://localhost:3000/home' });
+      await signIn("google", { callbackUrl: 'http://localhost:3000/explore' });
     } catch (error) {
       console.error('Error signing in:', error); // Log the error for debugging
       setIsLoading(false);
