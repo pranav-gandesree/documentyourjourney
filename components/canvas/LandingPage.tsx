@@ -1,3 +1,6 @@
+
+'use client'
+
 import { motion } from "framer-motion";
 import { PenLine, BarChart2, Users, Share2, Award, Briefcase } from "lucide-react";
 import Link from "next/link";
