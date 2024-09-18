@@ -23,7 +23,7 @@ const SidebarComponent = () => {
   return (
     <motion.div
       animate={{ width: isOpen ? 240 : 60 }}
-      className=" bg-gray-800 p-4 text-white shadow-lg"
+      className=" bg-gray-800 p-4 text-white shadow-lg fixed top-20"
       onHoverStart={toggleSidebar}
       onHoverEnd={toggleSidebar}
     >
@@ -52,3 +52,9 @@ const SidebarComponent = () => {
 };
 
 export default SidebarComponent;
+
+
+
+
+
+

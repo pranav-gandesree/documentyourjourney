@@ -50,8 +50,8 @@ const NewPage = () => {
     alert('Page saved successfully!');
   };
 
-  return (
-    <div className="container mx-auto py-8 px-4">
+  return (  
+    <div className="container ml-32 my-4 py-8 px-4 w-auto">
       <h1 className="text-2xl font-bold mb-4">Create New Page</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Title Input */}

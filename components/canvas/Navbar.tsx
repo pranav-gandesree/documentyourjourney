@@ -8,7 +8,7 @@ const Navbar = () => {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-blue-600 text-white">
+    <nav className="flex items-center justify-between p-4 bg-blue-600 z-10 w-full text-white fixed">
       <div className="text-lg font-bold">
         <Link href="/">MyApp</Link>
       </div>
