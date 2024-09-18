@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt', // Using JWT session strategy
   },
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }:any ) {
       if (user) {
         token.uid = user.id;         // Store user id
         token.email = user.email;   // Store email

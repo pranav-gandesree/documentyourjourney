@@ -9,7 +9,7 @@ import { Card } from '@/components/ui/card';
 
 const Dashboard = () => {
   const [streak] = useState(7);
-  const [goalsProgress, setGoalsProgress] = useState(65); 
+  const [goalsProgress] = useState(65); 
 
   const recentPages = [
     { id: 1, title: 'My First Page', date: '2024-09-01' },
