@@ -1,25 +1,16 @@
-'use client'
+import { motion } from "framer-motion";
+import { PenLine, BarChart2, Users, Share2, Award, Briefcase } from "lucide-react";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { useState, useEffect } from "react";
+import { Button } from "../ui/button";
+import { FeatureCard } from "./FeatureCards";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { PenLine, BarChart2, Users, Share2, Award, Briefcase } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+interface FloatingStarProps {
+  delay: number;
+}
 
-const FeatureCard = ({ icon: Icon, title, description }: any) => (
-  <motion.div
-    className="flex flex-col items-center text-center p-6 bg-gray-800 rounded-lg"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Icon className="h-12 w-12 mb-4 text-purple-400" />
-    <h3 className="text-lg font-bold text-purple-300">{title}</h3>
-    <p className="text-sm text-gray-400">{description}</p>
-  </motion.div>
-)
-
-const FloatingStar = ({ delay }: any) => (
+const FloatingStar = ({ delay }: FloatingStarProps) => (
   <motion.div
     className="absolute w-1 h-1 bg-white rounded-full"
     initial={{ opacity: 0, y: "100vh" }}
@@ -29,22 +20,20 @@ const FloatingStar = ({ delay }: any) => (
       left: `${Math.random() * 100}%`,
     }}
   />
-)
+);
+
+
 
 export default function LandingPage() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  // const session = useSession();
-  // if(session){
-  //   redirect('/home')
-  // }
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
-    const updateMousePosition = (e: any) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', updateMousePosition)
-    return () => window.removeEventListener('mousemove', updateMousePosition)
-  }, [])
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => window.removeEventListener('mousemove', updateMousePosition);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white overflow-hidden">
@@ -96,7 +85,7 @@ export default function LandingPage() {
               </div>
               <div className="space-x-4">
                 <Link href='/signin'>
-                <Button className="bg-purple-600 hover:bg-purple-700">Get Started</Button>
+                  <Button className="bg-purple-600 hover:bg-purple-700">Get Started</Button>
                 </Link>
                 <Button variant="outline" className="text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-gray-900">Learn More</Button>
               </div>
@@ -171,29 +160,17 @@ export default function LandingPage() {
                 </form>
                 <p className="text-xs text-gray-400">
                   By signing up, you agree to our{" "}
-                  <Link className="underline underline-offset-2 hover:text-purple-400" href="#">
-                    Terms & Conditions
-                  </Link>
+                  <Link href="#" className="text-purple-400 hover:underline">Terms of Service</Link> and{" "}
+                  <Link href="#" className="text-purple-400 hover:underline">Privacy Policy</Link>.
                 </p>
               </div>
             </motion.div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-purple-900/20 z-0" />
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-gray-700">
-        <p className="text-xs text-gray-400">
-          © 2023 DocumentYourJourney. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4 text-gray-400 hover:text-purple-400" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4 text-gray-400 hover:text-purple-400" href="#">
-            Privacy
-          </Link>
-        </nav>
+      <footer className="bg-gray-800 py-6 text-center text-gray-400">
+        <p>© 2024 DocumentYourJourney. All rights reserved.</p>
       </footer>
     </div>
-  )
+  );
 }
